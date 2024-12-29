@@ -44,7 +44,7 @@ const displayPets = (data) =>{
         <hr class="my-2">
         <div class="flex justify-between items-center px-2">
             <button onclick="like('${pet.image}')" class="btn bg-white text-primary rounded-lg py-1 px-4"><i class="fa-regular fa-thumbs-up"></i></button>
-            <button class="btn bg-white text-primary rounded-lg py-1 px-4">Adopt</button>
+            <button onclick="adoptModal(this)" class="btn bg-white text-primary rounded-lg py-1 px-4">Adopt</button>
             <button class="btn bg-white text-primary rounded-lg py-1 px-4">Details</button>
 
         </div>
@@ -66,6 +66,25 @@ const displayCategories = (data) => {
         categoryContainer.appendChild(div);
     })
 }
+
+// adopt button functionality
+const adoptModal = event =>{
+    let count = 3;
+    const countContainer = document.getElementById('countdown-container');
+    countContainer.innerText = count;
+    countdownModal.showModal();
+    const interval = setInterval(() =>{
+        count --;
+        if(count !== 0) countContainer.innerText = count;
+        if(count< 1){
+            clearInterval(interval);
+            countdownModal.close();
+            event.textContent = 'Adopted'
+            event.disabled = 'true';
+        }
+    }, 1000) 
+}
+
 loadCategories();
 loadAllPets();
 loadPetsByCategory();
