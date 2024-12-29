@@ -4,20 +4,27 @@ const loadCategories = async () => {
     displayCategories(data.categories)
 }
 const loadAllPets = async()=>{
+    loadingSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
     const data =await res.json()
-    displayPets(data.pets)
+    setTimeout(() =>{
+        displayPets(data.pets);
+        loadingSpinner(false)
+    }, 2000)
 }
 const loadPetsByCategory = async(category) =>{
+    loadingSpinner(true);
     console.log(category)
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     const data = await res.json()
-   displayPets(data.data);
+   setTimeout(() =>{
+    displayPets(data.data);
+    loadingSpinner(false)
+}, 2000)
 }
 
 const displayPets = (data) =>{
     const petContainers = document.getElementById('all-pets');
-    petContainers.innerHTML="";
     data.forEach(pet=>{
         const div = document.createElement('div');
         div.classList.add('flex', 'flex-col', 'gap-2','p-4','border','rounded-xl','font-bold');
@@ -45,7 +52,7 @@ const displayCategories = (data) => {
     data.forEach(category => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <button onclick="loadPetsByCategory('${category.category}')" class="btn category-btn bg-white flex item-center gap-4 rounded-xl border px-14 py-4 cursor-pointer h-full">
+        <button id="btn-${category.category}" onclick="loadPetsByCategory('${category.category}')" class="btn category-btn bg-white flex item-center gap-4 rounded-xl border px-14 py-4 cursor-pointer h-full">
                 <img class="w-10" src="${category.category_icon}" alt="">
                 <p class="text-xl font-bold">${category.category}</p>
         </button>
