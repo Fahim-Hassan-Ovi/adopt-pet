@@ -8,6 +8,7 @@ const loadAllPets = async()=>{
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
     const data =await res.json()
     setTimeout(() =>{
+        storesPetData= data.pets;
         displayPets(data.pets);
         loadingSpinner(false)
     }, 2000)
@@ -19,10 +20,10 @@ const loadPetsByCategory = async(category) =>{
     addActiveClasses(category);
     // spinner call
     loadingSpinner(true);
-    console.log(category)
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     const data = await res.json()
    setTimeout(() =>{
+    storesPetData= data.data;
     displayPets(data.data);
     loadingSpinner(false)
 }, 2000)
