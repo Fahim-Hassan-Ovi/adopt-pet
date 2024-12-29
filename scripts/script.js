@@ -3,17 +3,17 @@ const loadCategories = async () => {
     const data = await res.json()
     displayCategories(data.categories)
 }
-const loadAllPets = async()=>{
+const loadAllPets = async () => {
     loadingSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
-    const data =await res.json()
-    setTimeout(() =>{
-        storesPetData= data.pets;
+    const data = await res.json()
+    setTimeout(() => {
+        storesPetData = data.pets;
         displayPets(data.pets);
         loadingSpinner(false)
     }, 2000)
 }
-const loadPetsByCategory = async(category) =>{
+const loadPetsByCategory = async (category) => {
     // Remove active class if exists
     removeActiveClasses();
     // Show active class
@@ -22,25 +22,39 @@ const loadPetsByCategory = async(category) =>{
     loadingSpinner(true);
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     const data = await res.json()
-   setTimeout(() =>{
-    storesPetData= data.data;
-    displayPets(data.data);
-    loadingSpinner(false)
-}, 2000)
+    setTimeout(() => {
+        storesPetData = data.data;
+        displayPets(data.data);
+        loadingSpinner(false)
+    }, 2000)
 }
 
-const displayPets = (data) =>{
+const displayPets = (data) => {
     const petContainers = document.getElementById('all-pets');
-    data.forEach(pet=>{
+    if (data.length === 0) {
+        petContainers.classList.remove('grid')
+        petContainers.innerHTML= `
+        <div class="flex flex-col gap-4 justify-center items-center bg-[#13131308] py-9 px-8 rounded-xl">
+            <img src="images/error.webp" alt="">
+            <h2 class="text-3xl font-bold">No Information Available</h2>
+            <p class="text-gray-400 text-xl">Sorry, we donn't have any pet in this category. We are very sorry for our limitation. If you need this category pet, please contact with us. </p>
+        </div>
+        `
+        return
+    }
+    else {
+        petContainers.classList.add('grid')
+    }
+    data.forEach(pet => {
         const div = document.createElement('div');
-        div.classList.add('flex', 'flex-col', 'gap-2','p-4','border','rounded-xl','font-bold');
-        div.innerHTML= `
+        div.classList.add('flex', 'flex-col', 'gap-2', 'p-4', 'border', 'rounded-xl', 'font-bold');
+        div.innerHTML = `
         <img class="h-36 w-full rounded-xl object-cover" src="${pet.image}" alt="">
         <h3 class="text-xl">${pet.pet_name}</h3>
-        <p class="text-sm text-gray-700">Breed: ${pet.breed? pet.breed: 'Not Available'}</p>
-        <p class="text-sm text-gray-700">Birth: ${pet.date_of_birth? pet.date_of_birth: 'Not Found'}</p>
-        <p class="text-sm text-gray-700">Gender: ${pet.gender? pet.gender: 'Unknown'}</p>
-        <p class="text-sm text-gray-700">Price: ${pet.price? "$" + pet.price : 'Not Fixed'}</p>
+        <p class="text-sm text-gray-700">Breed: ${pet.breed ? pet.breed : 'Not Available'}</p>
+        <p class="text-sm text-gray-700">Birth: ${pet.date_of_birth ? pet.date_of_birth : 'Not Found'}</p>
+        <p class="text-sm text-gray-700">Gender: ${pet.gender ? pet.gender : 'Unknown'}</p>
+        <p class="text-sm text-gray-700">Price: ${pet.price ? "$" + pet.price : 'Not Fixed'}</p>
         <hr class="my-2">
         <div class="flex justify-between items-center px-2">
             <button onclick="like('${pet.image}')" class="btn bg-white text-primary rounded-lg py-1 px-4"><i class="fa-regular fa-thumbs-up"></i></button>
@@ -68,21 +82,21 @@ const displayCategories = (data) => {
 }
 
 // adopt button functionality
-const adoptModal = event =>{
+const adoptModal = event => {
     let count = 3;
     const countContainer = document.getElementById('countdown-container');
     countContainer.innerText = count;
     countdownModal.showModal();
-    const interval = setInterval(() =>{
-        count --;
-        if(count !== 0) countContainer.innerText = count;
-        if(count< 1){
+    const interval = setInterval(() => {
+        count--;
+        if (count !== 0) countContainer.innerText = count;
+        if (count < 1) {
             clearInterval(interval);
             countdownModal.close();
             event.textContent = 'Adopted'
             event.disabled = 'true';
         }
-    }, 1000) 
+    }, 1000)
 }
 
 loadCategories();
