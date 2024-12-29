@@ -13,6 +13,11 @@ const loadAllPets = async()=>{
     }, 2000)
 }
 const loadPetsByCategory = async(category) =>{
+    // Remove active class if exists
+    removeActiveClasses();
+    // Show active class
+    addActiveClasses(category);
+    // spinner call
     loadingSpinner(true);
     console.log(category)
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)

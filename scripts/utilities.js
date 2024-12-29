@@ -10,3 +10,20 @@ const loadingSpinner = (show)=>{
         spinner.classList.add('hidden');
     }
 }
+
+// Remove active button style
+const removeActiveClasses = () =>{
+const allButtons = document.getElementsByClassName('category-btn');
+
+for(btn of allButtons){
+    btn.classList.remove('bg-emerald-100', 'rounded-full', 'border-primary','border-2');
+    btn.classList.add('rounded-xl');
+}
+}
+
+// Add active button style
+const addActiveClasses = (category)=>{
+const activeButton = document.getElementById(`btn-${category}`)
+activeButton.classList.remove('rounded-xl');
+activeButton.classList.add('bg-emerald-100', 'rounded-full', 'border-primary','border-2')
+}
