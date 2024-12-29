@@ -27,3 +27,13 @@ const activeButton = document.getElementById(`btn-${category}`)
 activeButton.classList.remove('rounded-xl');
 activeButton.classList.add('bg-emerald-100', 'rounded-full', 'border-primary','border-2')
 }
+
+// handle like button
+const like = (imgUrl)=>{
+    const imageContainer = document.getElementById('liked-pets');
+    const div = document.createElement('div');
+    div.innerHTML= `
+    <img class="rounded-lg" src="${imgUrl}" alt="">
+    `
+    imageContainer.appendChild(div);
+}

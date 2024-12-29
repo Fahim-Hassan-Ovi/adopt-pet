@@ -42,7 +42,7 @@ const displayPets = (data) =>{
         <p class="text-sm text-gray-700">Price: ${pet.price? "$" + pet.price : 'Not Fixed'}</p>
         <hr class="my-2">
         <div class="flex justify-between items-center px-2">
-            <button class="btn bg-white text-primary rounded-lg py-1 px-4"><i class="fa-regular fa-thumbs-up"></i></button>
+            <button onclick="like('${pet.image}')" class="btn bg-white text-primary rounded-lg py-1 px-4"><i class="fa-regular fa-thumbs-up"></i></button>
             <button class="btn bg-white text-primary rounded-lg py-1 px-4">Adopt</button>
             <button class="btn bg-white text-primary rounded-lg py-1 px-4">Details</button>
 
