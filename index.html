@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peddy | Your Path to Aoption is Here.</title>
+<link rel="icon" type="image/x-icon" href="images/logo.webp">
+<!-- css link -->
+<link rel="stylesheet" href="style.css">
+<!-- google fonts CDN-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+<!-- font-awesome -->
+<script src="https://kit.fontawesome.com/fac89ddc28.js" crossorigin="anonymous"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#0E7A81',
+                },
+                fontFamily: {
+                    Inter: 'Inter',
+                    Lato: 'Lato',
+                }
+            }
+        }
+    }
+</script>
+</head>
+
+<body>
+    <header class="max-w-[1280px] m-auto">
+        <nav>
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            <li><a>Home</a></li>
+                            <li><a>Shop</a></li>
+                            <li><a>Contact</a></li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-ghost text-xl">
+                        <div class="flex gap-2 justify-center items-center">
+                            <img class="w-1/2 h-1/2" src="images/logo.webp" alt="">
+                            <h3>Peddy</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a>Home</a></li>
+                        <li><a>Shop</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <a class="btn  rounded-full bg-white border-none "><i class="fa-regular fa-user"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="md:mx-20 lg:mx-32">
+        <!-- hero section -->
+        <section class="max-w-[1280px] m-auto">
+            <div class="hero min-h-screen">
+                <div class="hero-content text-center">
+                    <div class="lg:w-3/5 flex flex-col justify-center items-center gap-5">
+                        <h3 class="text-2xl font-semibold">Bringing Families Together ❤️‍🔥</h3>
+                        <h1 class="text-5xl font-bold">Your Path to Adoption <br>Starts Here</h1>
+                        <p class="py-6">
+
+                            "Bringing Families Together ❤️‍🔥 Your Path to Adoption Starts Here" is a heartfelt
+                            initiative dedicated
+                            to connecting loving families with children in need. Through support, guidance, and
+                            compassion, we help
+                            transform lives and build lasting bonds.
+                        </p>
+                        <button
+                            class="btn btn-primary bg-primary border-primary hover:bg-gray-200 hover:border-gray-200 hover:text-black">View
+                            More</button>
+                        <img src="images/pet.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-[1280px] m-auto mt-8">
+            <div class="text text-center">
+                <!-- <h1 class="text-4xl font-bold pt-[3vh]">Adopt Your Best Friend</h1> -->
+                <h3 class="text-3xl font-bold">Adopt Your Best Friend</h3>
+                <p class="text-gray-400 text-xl mt-8">Pets are friendly animal. They are as cute as they loop. We have
+                    so
+                    many
+                    collection here. For Each category
+                    you will find so many uniqueness.</p>
+            </div>
+            <!-- Pet Category Button here -->
+
+            <div id="pet-categories" class="flex gap-4 justify-center lg:justify-between items-center my-4">
+                
+            </div>
+
+            <div class="flex items-center justify-between p-2 mb-4 lg:mb-8">
+                <h3 class="text-2xl font-bold">Best Deal For You</h3>
+                <button id="sortByPrice"
+                    class="btn bg-teal-600 hover:bg-gray-200 hover:border-gray-200 hover:text-black">Sort By Price
+                </button>
+
+            </div>
+
+        </div>
+    </main>
+    <footer class="footer bg-neutral text-neutral-content p-10 mt-4">
+        <nav>
+            <div class="flex items-center gap-1">
+                <img src="images/logo.webp " alt="">
+                <h2 class="text-2xl font-bold">Peddy</h2>
+            </div>
+            <a class="link link-hover">Location: av.Washington 165, NYCA</a>
+            <a class="link link-hover">54003</a>
+            <a class="link link-hover">Phone: +31859644725</a>
+            <a class="link link-hover">Email: info@yourdomain.com</a>
+            <a class="link link-hover">Opening hours: 9:00AM - 5:00PM</a>
+            <div class="flex gap-3">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </nav>
+        <nav>
+            <h6 class="footer-title inter">Useful links</h6>
+            <a class="link link-hover">Home</a>
+            <a class="link link-hover">About us</a>
+            <a class="link link-hover">Animals</a>
+            <a class="link link-hover">Foundation</a>
+            <a class="link link-hover">Contact</a>
+        </nav>
+        <form>
+            <h6 class="footer-title inter">Drop a Message</h6>
+            <fieldset class="form-control w-80">
+                <div class="flex flex-col gap-4">
+                    <input type="text" placeholder="Enter your email"
+                        class="input input-bordered join-item bg-opacity-5 backdrop-blur-md" />
+                    <button
+                        class="btn btn-primary join-item bg-primary border-primary  hover:bg-gray-200 hover:border-gray-200 hover:text-black">Subscribe</button>
+                </div>
+            </fieldset>
+        </form>
+    </footer>
+    <!-- Details Modal -->
+    <button id="showModalData" class="btn hidden" onclick="customModal.showModal()">open modal</button>
+    <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div id="modal-content"></div>
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn w-full border-primary bg-primary opacity-50 text-black">Close</button>
+            </form>
+        </div>
+        </div>
+    </dialog>
+
+    <!-- adopt modal -->
+    <button id="showAdoptModal" class="btn hidden" onclick="countdownModal.showModal()">open modal</button>
+    <dialog id="countdownModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div id="modal-content" class="flex flex-col justify-center items-center gap-3">
+                <i class="fa-solid fa-handshake text-primary"></i>
+                <h2 class="text-3xl font-bold">Congrates</h2>
+                <p class="texr-2xl font-semibold">Adoption Process is Start For your Pet</p>
+                <p id="countdownText" class="text-3xl font-extrabold">3</p>
+            </div>
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button id="adopt-btn-close"
+                    class="btn w-full border-primary bg-primary opacity-50 text-black hidden">Close</button>
+            </form>
+        </div>
+        </div>
+    </dialog>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
