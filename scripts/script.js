@@ -8,9 +8,16 @@ const loadAllPets = async()=>{
     const data =await res.json()
     displayPets(data.pets)
 }
+const loadPetsByCategory = async(category) =>{
+    console.log(category)
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
+    const data = await res.json()
+   displayPets(data.data);
+}
 
 const displayPets = (data) =>{
     const petContainers = document.getElementById('all-pets');
+    petContainers.innerHTML="";
     data.forEach(pet=>{
         const div = document.createElement('div');
         div.classList.add('flex', 'flex-col', 'gap-2','p-4','border','rounded-xl','font-bold');
@@ -20,7 +27,14 @@ const displayPets = (data) =>{
         <p class="text-sm text-gray-700">Breed: ${pet.breed? pet.breed: 'Not Available'}</p>
         <p class="text-sm text-gray-700">Birth: ${pet.date_of_birth? pet.date_of_birth: 'Not Found'}</p>
         <p class="text-sm text-gray-700">Gender: ${pet.gender? pet.gender: 'Unknown'}</p>
-        <p class="text-sm text-gray-700">Price: ${pet.price? pet.price : 'Not Fixed'}</p>
+        <p class="text-sm text-gray-700">Price: ${pet.price? "$" + pet.price : 'Not Fixed'}</p>
+        <hr class="my-2">
+        <div class="flex justify-between items-center px-2">
+            <button class="btn bg-white text-primary rounded-lg py-1 px-4"><i class="fa-regular fa-thumbs-up"></i></button>
+            <button class="btn bg-white text-primary rounded-lg py-1 px-4">Adopt</button>
+            <button class="btn bg-white text-primary rounded-lg py-1 px-4">Details</button>
+
+        </div>
         `
         petContainers.appendChild(div);
     })
@@ -31,7 +45,7 @@ const displayCategories = (data) => {
     data.forEach(category => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <button class="btn category-btn bg-white flex item-center gap-4 rounded-xl border px-14 py-4 cursor-pointer h-full">
+        <button onclick="loadPetsByCategory('${category.category}')" class="btn category-btn bg-white flex item-center gap-4 rounded-xl border px-14 py-4 cursor-pointer h-full">
                 <img class="w-10" src="${category.category_icon}" alt="">
                 <p class="text-xl font-bold">${category.category}</p>
         </button>
@@ -41,3 +55,4 @@ const displayCategories = (data) => {
 }
 loadCategories();
 loadAllPets();
+loadPetsByCategory();
