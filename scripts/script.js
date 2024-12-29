@@ -28,6 +28,40 @@ const loadPetsByCategory = async (category) => {
         loadingSpinner(false)
     }, 2000)
 }
+const loadPetDetails = async (id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
+    const data = await res.json()
+  displayPetDetails(data.petData);
+}
+
+const displayPetDetails = e =>{
+    const modalBody = document.getElementById('modal-content');
+    modalBody.innerHTML= `
+    <img class="w-full h-60 rounded-xl object-cover" src="${e.image}" alt="">
+    <h2 class="text-xl font-bold my-2">${e.pet_name}</h2>
+    <div class="flex items-start gap-6">
+        <div>
+            <p class="text-gray-400 text-sm"><i class="fa-solid fa-table-cells"></i>Breed: ${e.breed ? e.breed : 'Not Available'}</p>
+
+            <p class="text-gray-400 text-sm"><i class="fa-regular fa-calendar"></i>Birth: ${e.date_of_birth ? e.date_of_birth : 'Not Found'}</p>
+
+            <p class="text-gray-400 text-sm"><i class="fa-solid fa-mercury"></i>Gender: ${e.gender ? e.gender : 'Unknown'}</p>
+
+        </div>
+        <div>
+            <p class="text-gray-400 text-sm"><i class="fa-solid fa-dollar-sign"></i>Price: ${e.price ? '$' + e.price :'Not Fixed'}</p>
+
+            <p class="text-gray-400 text-sm"><i class="fa-solid fa-syringe"></i>Vaccinated status: ${e.vaccinated_status? e.vaccinated_status :'Not Done'}</p>
+
+        </div>
+    </div>
+    <hr class="my-2">
+
+    <h2 class="text-md font-semibold">Details Information</h2>
+    <p class="text-gray-400 text-sm">Breed: ${e.pet_details? e.pet_details : 'Not Available'}</p>
+    `
+    customModal.showModal();
+}
 
 const displayPets = (data) => {
     const petContainers = document.getElementById('all-pets');
@@ -59,7 +93,7 @@ const displayPets = (data) => {
         <div class="flex justify-between items-center px-2">
             <button onclick="like('${pet.image}')" class="btn bg-white text-primary rounded-lg py-1 px-4"><i class="fa-regular fa-thumbs-up"></i></button>
             <button onclick="adoptModal(this)" class="btn bg-white text-primary rounded-lg py-1 px-4">Adopt</button>
-            <button class="btn bg-white text-primary rounded-lg py-1 px-4">Details</button>
+            <button onclick="loadPetDetails('${pet.petId}')" class="btn bg-white text-primary rounded-lg py-1 px-4">Details</button>
 
         </div>
         `
